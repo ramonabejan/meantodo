@@ -1,4 +1,8 @@
 'use strict';
+
+var angular = require('angular');
+require('../services/data.js');
+
 angular.module('todoListApp').controller('mainCtrl', function($scope,dataService) {
 
 	$scope.helloWorld = function() {
@@ -11,7 +15,7 @@ angular.module('todoListApp').controller('mainCtrl', function($scope,dataService
 	}
 
 	dataService.getTodos(function(response){
-		$scope.todos = response.data;
+		$scope.todos = response.data.todos;
 	});
 
 	$scope.deleteTodo = function(todo,index){

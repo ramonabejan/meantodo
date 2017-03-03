@@ -1,4 +1,5 @@
 'use strict';
+var angular = require('angular');
 
 angular.module('todoListApp').service('dataService',function($http){
 	this.saveTodos = function(todos){
@@ -7,12 +8,15 @@ angular.module('todoListApp').service('dataService',function($http){
 	}
 
 	this.getTodos= function(callback){
-		$http.get("mock/todos").then(callback);
+		$http.get("api/todos").then(callback);
 	}
 
-	this.deleteTodo=function(todo){
+
+	this.deleteTodo= function(todo){
 		console.log("The todo '" + todo.name+ "' has been deleted " );
 	}
 
 
 })
+
+require('../directives/todos.js');
