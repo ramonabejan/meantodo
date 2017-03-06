@@ -7,6 +7,7 @@ angular.module('todoListApp').service('dataService',function($http){
 		console.log("Saved '" + todos.length+ " todos ");
 	}
 
+	//see the src/api/index.js for the implementation of the "api/todos"api
 	this.getTodos= function(callback){
 		$http.get("api/todos").then(callback);
 	}
