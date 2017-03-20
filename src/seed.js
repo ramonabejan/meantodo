@@ -1,4 +1,5 @@
 'use strict';
+//create mock data in db 
 
 var Todo = require('./models/todo.js');
 

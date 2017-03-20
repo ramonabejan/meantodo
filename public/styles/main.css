@@ -53,7 +53,7 @@ a {
     text-decoration: line-through; }
   .list .add {
     padding: 25px 0 27px 25px; }
-/*
+
 input[type="checkbox"] {
     display:none;
 }
@@ -69,4 +69,3 @@ input[type="checkbox"] + span {
 input[type="checkbox"]:checked + span {
     background:url(checkbox-filled.svg) left top no-repeat;
 }
-*/

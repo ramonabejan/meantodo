@@ -35,7 +35,14 @@ angular.module('todoListApp').controller('mainCtrl', function($scope,dataService
 				return todo;
 			}
 		}); 
-		dataService.saveTodos(editedTodos);
+		dataService.saveTodos(editedTodos)
+					.finally($scope.resetStateTodo());
+	}
+
+	$scope.resetStateTodo=function(){
+		$scope.todos.forEach(function(todo){
+			todo.editing=false;
+		});
 	}
 
 
@@ -61,10 +68,34 @@ angular.module('todoListApp').directive('todos', function(){
 
 var angular = __webpack_require__(0);
 
-angular.module('todoListApp').service('dataService',function($http){
+dataService.$inject = ['$http','$q'];
+
+angular.module('todoListApp')
+		.service('dataService',dataService);
+
+function dataService($http,$q){
 	this.saveTodos = function(todos){
-		console.log(todos);
-		console.log("Saved '" + todos.length+ " todos ");
+	
+		var queue = [];
+
+		todos.forEach(function(todo){
+			var request; 
+			if(!todo._id) {
+				request = $http.post('/api/todos',todo);
+			}
+			else{
+				request = $http.put('/api/todos/'+todo._id,todo).then(function(results){
+							
+							todo = results.data.todo;
+							return todo;
+				});
+			}
+			queue.push(request);
+		});
+
+		return $q.all(queue).then(function(results){
+			console.log("I saved " + results.length + " todos");
+		});
 	}
 
 	//see the src/api/index.js for the implementation of the "api/todos"api
@@ -78,7 +109,7 @@ angular.module('todoListApp').service('dataService',function($http){
 	}
 
 
-})
+}
 
 __webpack_require__(2);
 

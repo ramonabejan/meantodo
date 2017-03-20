@@ -29,7 +29,14 @@ angular.module('todoListApp').controller('mainCtrl', function($scope,dataService
 				return todo;
 			}
 		}); 
-		dataService.saveTodos(editedTodos);
+		dataService.saveTodos(editedTodos)
+					.finally($scope.resetStateTodo());
+	}
+
+	$scope.resetStateTodo=function(){
+		$scope.todos.forEach(function(todo){
+			todo.editing=false;
+		});
 	}
 
 
