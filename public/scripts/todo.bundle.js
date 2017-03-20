@@ -67,6 +67,7 @@ angular.module('todoListApp').service('dataService',function($http){
 		console.log("Saved '" + todos.length+ " todos ");
 	}
 
+	//see the src/api/index.js for the implementation of the "api/todos"api
 	this.getTodos= function(callback){
 		$http.get("api/todos").then(callback);
 	}
@@ -88,9 +89,12 @@ __webpack_require__(2);
 
 "use strict";
 
+
 var angular = __webpack_require__(0);
 
-angular.module("todoListApp", [])
+
+angular.module("todoListApp", []);
+
 
 __webpack_require__(1);
 
