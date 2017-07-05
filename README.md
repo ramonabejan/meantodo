@@ -1,5 +1,5 @@
 Mean todo apllication ---
 
-A todo application using MongoDB,Express,Angular(1.x),Node
+A todo application using MongoDB,Express,AngularJs,Node
 
 see my profile on teamtreehouse https://teamtreehouse.com/ramonabejan
